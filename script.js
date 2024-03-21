@@ -1,28 +1,45 @@
-makeBubbles();
+let timer = 1000
+const container = document.querySelector('.container')
+container.style.backgroundColor = randColor()
+setTimeout(frequency, timer)
+
+function frequency() {
+    const screen = container.clientWidth * container.clientHeight
+    if (screen <= 480000) {
+        timer = 1000
+    }
+    else if (screen <= 1024000) {
+        timer = 800
+    }
+    else {
+        timer = 100
+    }
+    makeBubbles()
+    setTimeout(frequency, timer)
+}
+
+const clearBubbles = setInterval(() => {
+    const delBubbles = []
+    const clear = container.querySelectorAll('.circle')
+    clear.forEach(item => {
+        if (item.style.opacity == 0)
+            delBubbles.push(item)
+    })
+    while (delBubbles.length > 0) {
+        container.removeChild(delBubbles.shift())
+    }
+    container.style.backgroundColor = randColor()
+}, 20000);
 
 function makeBubbles() {
-    const container = document.querySelector('.container')
-    const timeBubbles = setInterval(() => {
-        const x = Math.floor(Math.random() * container.clientWidth + 1)
-        const y = Math.floor(Math.random() * container.clientHeight + 1)
-        container.appendChild(createCircle(x, y))
-    }, 100);
-    const clearBubbles = setInterval(() => {
-        const delBubbles = []
-        const clear = container.querySelectorAll('.circle')
-        clear.forEach(item => {
-            if (item.style.opacity == 0)
-                delBubbles.push(item)
-        })
-        while (delBubbles.length > 0) {
-            container.removeChild(delBubbles.shift())
-        }
-    }, 20000);
+    const x = Math.floor(Math.random() * container.clientWidth + 1)
+    const y = Math.floor(Math.random() * container.clientHeight + 1)
+    return container.appendChild(createCircle(x, y))
 }
 
 function createCircle(x, y) {
     const div = document.createElement('div')
-    div.id = 'div_' + x + '_' + y
+    div.id = 'div_' + x + '_' + y + '_' + Date.now().toString()
     div.style.width = 0;
     div.style.height = 0;
     div.style.left = x + 'px'
@@ -41,7 +58,7 @@ function createCircle(x, y) {
     return div
 }
 
-function randRadius(max = 500, min = 50) {
+function randRadius(max = 500, min = 100) {
     return Math.floor(Math.random() * max) + min;
 }
 
