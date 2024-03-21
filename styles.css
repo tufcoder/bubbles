@@ -1,0 +1,21 @@
+body {
+    background-color: var(--black1);
+    overflow: hidden;
+}
+
+:root {
+    --black1: #141414;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.circle {
+    position: fixed;
+    border-radius: 50%;
+    transition-property: width, height, opacity;
+    transition-duration: 3s;
+    transform: translateX(-50%) translateY(-50%);
+}
