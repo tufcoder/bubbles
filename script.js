@@ -27,25 +27,6 @@ const clearBubbles = setInterval(() => {
     container.style.backgroundColor = randColor()
 }, 10000)
 
-// container.addEventListener("dragenter", (e) => {
-//     e.preventDefault()
-// })
-
-// container.addEventListener("dragover", (e) => {
-//     e.preventDefault()
-// })
-
-// container.addEventListener("dragleave", (e) => {
-//     e.preventDefault()
-// })
-
-// container.addEventListener("drop", (e) => {
-//     const id = e.dataTransfer.getData('text/plain')
-//     const draggable = document.getElementById(id);
-//     e.target.appendChild(draggable)
-//     draggable.classList.remove('hide')
-// })
-
 function makeBubbles() {
     return container.appendChild(createCircle())
 }
@@ -62,16 +43,9 @@ function createCircle() {
     div.style.borderRadius = '50%'
     div.className = 'circle'
     div.style.backgroundColor = randColor()
-    div.setAttribute('draggable', true)
     div.addEventListener("transitionend", () => {
         div.style.opacity = 0
     })
-    // div.addEventListener("dragstart", (e) => {
-    //     e.dataTransfer.setData('text/plain', e.target.id)
-    //     setTimeout(() => {
-    //         e.target.classList.add('hide')
-    //     }, 0);
-    // })
     setTimeout(() => {
         const radius = randRadius()
         div.style.width = radius + 'px'
