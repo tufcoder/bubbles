@@ -1,3 +1,3 @@
-# Bubles
+# Bubbles
 
 https://tufcoder-bubbles.netlify.app
