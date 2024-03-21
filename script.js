@@ -43,15 +43,15 @@ function createCircle() {
     div.style.borderRadius = '50%'
     div.className = 'circle'
     div.style.backgroundColor = randColor()
-    div.addEventListener("transitionend", () => {
-        div.style.opacity = 0
-    })
     setTimeout(() => {
         const radius = randRadius()
         div.style.width = radius + 'px'
         div.style.height = radius + 'px'
         div.style.opacity = randOpacity()
     }, 100)
+    div.addEventListener("transitionend", () => {
+        div.style.opacity = 0
+    })
     return div
 }
 
