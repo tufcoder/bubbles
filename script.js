@@ -6,7 +6,7 @@ function makeBubbles() {
         const x = Math.floor(Math.random() * container.clientWidth + 1)
         const y = Math.floor(Math.random() * container.clientHeight + 1)
         container.appendChild(createCircle(x, y))
-    }, 50);
+    }, 100);
     const clearBubbles = setInterval(() => {
         const delBubbles = []
         const clear = container.querySelectorAll('.circle')
