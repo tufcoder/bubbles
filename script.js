@@ -1,10 +1,10 @@
 let timer = 1000
 const container = document.querySelector('.container')
+const screen = container.clientWidth * container.clientHeight
 container.style.backgroundColor = randColor()
 setTimeout(frequency, timer)
 
 function frequency() {
-    const screen = container.clientWidth * container.clientHeight
     if (screen <= 480000)
         timer = 1000
     else if (screen <= 1024000)
@@ -55,12 +55,14 @@ function createCircle() {
     return div
 }
 
-function randRadius(max = 500, min = 100) {
+function randRadius(max = 800, min = 100) {
+    if (screen <= 480000)
+        max = 400
     return Math.floor(Math.random() * max) + min
 }
 
 function randColor() {
-    return '#' + Math.round((Math.random() * 0xFFFFFF))
+    return '#' + Math.round(Math.random() * 0xFFFFFF)
         .toString(16)
         .padEnd(6, "F")
 }
