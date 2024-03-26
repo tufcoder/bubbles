@@ -41,6 +41,10 @@ body {
     background-color: blue;
 }
 
+.hide {
+    display: none;
+}
+
 @media (max-width: 800px) {
     .circle {
         transition: all 2s;
